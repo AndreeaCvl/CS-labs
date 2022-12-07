@@ -7,8 +7,7 @@ class DigitalSignature:
         self.digest = None
 
     def digest_message(self):
-        # self.message = input('What is your message?\n')
-        self.message = 'mai am de facut inca un laborator'
+        self.message = input('What is your message?\n')
 
         self.digest = hashlib.sha256(self.message.encode('UTF-8')).hexdigest()
         return self.digest
