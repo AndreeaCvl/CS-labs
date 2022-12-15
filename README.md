@@ -13,8 +13,8 @@
 
 ## Laboratory work tasks
 
-[Laboratory Work #1](https://github.com/AndreeaCvl/CS-labs/tree/main/Lab%201)
-[Laboratory Work #2](https://github.com/AndreeaCvl/CS-labs/tree/main/Lab-2)
-[Laboratory Work #3](https://github.com/AndreeaCvl/CS-labs/tree/main/Lab-3)
-[Laboratory Work #4](https://github.com/AndreeaCvl/CS-labs/tree/main/Lab-4)
+[Laboratory Work #1](https://github.com/AndreeaCvl/CS-labs/blob/main/Reports/LAB%201%20REPORT.md) <br>
+[Laboratory Work #2](https://github.com/AndreeaCvl/CS-labs/blob/main/Reports/LAB%202%20REPORT.md)  <br>
+[Laboratory Work #3](https://github.com/AndreeaCvl/CS-labs/blob/main/Reports/LAB%203%20REPORT.md)  <br>
+[Laboratory Work #4](https://github.com/AndreeaCvl/CS-labs/blob/main/Reports/LAB%204%20REPORT.md)
 
