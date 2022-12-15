@@ -26,7 +26,17 @@ def register():
         reg.register(user_data['username'], user_data['password'], "simple")
         print(db.fetch_database())
 
-        return "New record created"
+        username = user_data['username']
+
+        key[username] = username + "SecretKey"
+        k = base64.b32encode(bytearray(key[username], 'ascii')).decode('utf-8')
+
+        uri = pyotp.totp.TOTP(k).provisioning_uri(name=username, issuer_name="CS-lab-5")
+        print(uri)
+
+        qrcode.make(uri).save("totp.png")
+
+        return "New record created. Please scan the QR code for 2FA"
     except:
         return "Username already taken"
 
@@ -39,7 +49,18 @@ def admin_register():
     else:
         reg = Auth(db)
         reg.register(user_data['username'], user_data['password'], "admin")
-        return "Admin crated"
+
+        username = user_data['username']
+
+        key[username] = username + "SecretKey"
+        k = base64.b32encode(bytearray(key[username], 'ascii')).decode('utf-8')
+
+        uri = pyotp.totp.TOTP(k).provisioning_uri(name=username, issuer_name="CS-lab-5")
+        print(uri)
+
+        qrcode.make(uri).save("totp.png")
+
+        return "Admin created. Please scan the QR code for 2FA"
 
 
 @app.route('/api/login', methods=['POST'])
@@ -53,32 +74,18 @@ def login():
     result = log.login(username, password)
 
     if result:
-        key[username] = username+"SecretKey"
-        k = base64.b32encode(bytearray(key[username], 'ascii')).decode('utf-8')
+        k = base64.b32encode(bytearray(key[user_data['username']], 'ascii')).decode('utf-8')
+        totp = pyotp.TOTP(k)
+        print(totp.now())
 
-        uri = pyotp.totp.TOTP(k).provisioning_uri(name=username, issuer_name="CS-lab-5")
-        print(uri)
-
-        qrcode.make(uri).save("totp.png")
-
-        return "Please scan the QR code for 2FA"
+        if totp.now() == user_data['login_token']:
+            session_id = uuid.uuid1()
+            users_dict[user_data['username']] = str(session_id)
+            return "Your unique session ID is: " + str(session_id) + " Use it for your next requests"
+        else:
+            return "Incorrect token"
     else:
         return "Incorrect data! Try again."
-
-
-@app.route('/api/login2fa', methods=['POST'])
-def login2fa():
-    user_data = request.get_json()
-    k = base64.b32encode(bytearray(key[user_data['username']], 'ascii')).decode('utf-8')
-    totp = pyotp.TOTP(k)
-    print(totp.now())
-
-    if totp.now() == user_data['login_token']:
-        session_id = uuid.uuid1()
-        users_dict[user_data['username']] = str(session_id)
-        return "Your unique session ID is: " + str(session_id) + " Use it for your next requests"
-
-    return "Incorrect token"
 
 
 @app.route('/api/CaesarSubstitution', methods=['POST'])
