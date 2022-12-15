@@ -16,5 +16,6 @@
 [Laboratory Work #1](https://github.com/AndreeaCvl/CS-labs/blob/main/Reports/LAB%201%20REPORT.md) <br>
 [Laboratory Work #2](https://github.com/AndreeaCvl/CS-labs/blob/main/Reports/LAB%202%20REPORT.md)  <br>
 [Laboratory Work #3](https://github.com/AndreeaCvl/CS-labs/blob/main/Reports/LAB%203%20REPORT.md)  <br>
-[Laboratory Work #4](https://github.com/AndreeaCvl/CS-labs/blob/main/Reports/LAB%204%20REPORT.md)
+[Laboratory Work #4](https://github.com/AndreeaCvl/CS-labs/blob/main/Reports/LAB%204%20REPORT.md) <br>
+[Laboratory Work #5](https://github.com/AndreeaCvl/CS-labs/blob/main/Reports/LAB%205%20REPORT.md)
 
